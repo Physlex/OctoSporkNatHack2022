@@ -1,17 +1,16 @@
-from flask import Flask, request, jsonify
+import flask
+from flask import Flask
 from flask_cors import CORS
-from muse_stream import Stream
+from nat_muse import Muse
 
 app = Flask(__name__)
 cors = CORS(app)
 
 @app.route("/")
 def postME():
-    data = request.get_json()
-    data = jsonify(data)
+    data = flask.request.get_json()
+    data = flask.jsonify(data)
     return data
 
 if __name__ == "__main__" :
-    my_stream = Stream()
-    my_stream.connect()
     app.run(debug=True)
