@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from client.muse_import import Stream
+from muse_stream import Stream
 
 app = Flask(__name__)
 cors = CORS(app)
