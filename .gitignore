@@ -1,2 +1,3 @@
-/.vscode
+.vscode/
 /*.so
+__pycache__/
