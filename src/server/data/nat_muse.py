@@ -1,11 +1,10 @@
 import muselsl
-import sys
 
-class Muse:
-    def __init__(self, ID) -> None:
-        """
-        # Finds a muse in order of connection
-        """
+class NatMuse:
+    def __init__(self) -> None:
+        pass
+    
+    def connect(self, ID) -> None:
         print("Searching for muses")
         self.muses = muselsl.list_muses(interface=None)
         if not self.muses :
@@ -15,23 +14,16 @@ class Muse:
         if (len(self.muses) < ID) :
             print("""Error, access violation of muse list
             ID too big.""")
-        self.muse = self.muses[ID]
-        self.muses
+        self.ID = ID
+
+        self.muse = self.muses[self.ID]
         self.address = self.muse["address"]
         self.name = self.muse["name"]
-        self.ID = ID
-        pass
-    
-    def connect(self) -> None:
+
         print(f"Connecting muse: {self.name, self.ID} at: {self.address}")
         muselsl.stream(self.address)
         pass
 
-    def record(self):
-        muselsl.record()
+    def record(self, duration):
+        muselsl.record(duration)
         pass  # TODO(Alexander): Return and save CSV format of data
-
-if __name__ == "__main__" :
-    myMuse = Muse(0)
-    myMuse.connect()
-    pass
