@@ -26,23 +26,8 @@ button.onclick = function() {  // This is how you 'set' a func
      * by nature of it being an 'on click' event.
      * 
      */
-    const url = "https://localhost:8080";
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body:JSON.stringify(cars)}).then(response => {
-            if(response.ok) {
-                return response.json();
-            } else {
-                alert("something is wrong");
-            }
-        })
-        .then(jsonResponse => {    
-            console.log(jsonResponse);
-        })
-    // Log the Error
-    .catch((err) => console.error(err));
+    const url = "";
+    fetch(url)
+    .then((response) => response.json())
+    .then((data) => console.log(data));
 }
