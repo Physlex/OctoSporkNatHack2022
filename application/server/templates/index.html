@@ -21,7 +21,8 @@
         <div class="container mt-2 mb-2 pl-0">
             <div class="row justify-content-center">
                 <div class="column justify-content-center" id="data-request">
-                    <button id="the-button" class="btn bg-light">Post to Python</button>
+                    <button id="muse-connect-button" class="btn bg-light">Connect to Muse</button>
+                    <button id="muse-record-button" class="btn bg-light">Start Recording Muse</button>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -73,8 +74,8 @@
 
     <!-- Project JavaScript -->
     <!-- <script src="./index.js"></script> -->
-    <script src="./index.js"></script>
-    <script src="./timer.js"></script>
+    <script src="{{url_for('static', filename='fetch.js')}}"></script>
+    <script src="{{url_for('static', filename='timer.js')}}"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

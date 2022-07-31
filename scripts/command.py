@@ -14,11 +14,7 @@ class Connect(Command) :
         pass
 
     def execute(self) -> None:
-        args = ["python3", "./src/server/data/connect.py"]
+        args = ["python3", "./application/server/data/connect.py"]
         subprocess.Popen(args)    
         pass
 
-if __name__ == "__main__" :
-    connect_muse = Connect()
-    connect_muse.execute()
-    pass
