@@ -1,15 +1,11 @@
-from ast import Pass
 import subprocess
-from matplotlib.pyplot import connect
-
-from numpy import record
 
 class Command :
     def __init__(self) -> None:
         print("Executing command")
         pass
 
-    def execute() -> None:
+    def execute(self) -> None:
         pass
 
 class Connect(Command) :
