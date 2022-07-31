@@ -2,4 +2,3 @@
 /*.so
 __pycache__/
 environment/
-*.csv
