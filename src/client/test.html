@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Digit Span Attempt</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- JSpsyc library -->
+    <script src="https://unpkg.com/jspsych@7.3.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.1"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@1.1.1"></script>
+    <script src="jspsych-6.0.4/jspsych.js"></script>
+    <script src="jspsych-6.0.4/plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="jspsych-6.0.4/plugins/jspsych-digit-span-recall.js"></script>
+    <script src="jspsych-6.0.4/plugins/jspsych-survey-text.js"></script>
+    <script src="jspsych-6.0.4/plugins/jspsych-instructions.js"></script>
+    <script src="jspsych-6.0.4/plugins/jspsych-fullscreen.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.1"></script> 
+    <link href="jspsych-6.0.4/css/jspsych_digitspan.css" rel="stylesheet" type="text/css"></link>
+    <link href="https://unpkg.com/jspsych@7.3.0/css/jspsych.css" rel="stylesheet" type="text/css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body class="bg-dark text-white">
+
+    <!-- MAIN -->
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="column justify-content-center">
+                <h1>Forward Digit Span</h1>
+            </div>
+        </div>
+    </div>
+  </body>
+    <script>
+        var jsPsych = initJsPsych();
+
+        var timeline = [];
+
+        var welcome = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: "Welcome to the experiment. Press any key to begin."
+    };
+    timeline.push(welcome);
+
+    var instructions = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `
+        <p>In this experiment, a string of digits will appear, one at a time. </p>
+        <p>You need to remember as many digits as you can.</p>
+        <p>With two successful attempts, the length of the digit string will increase.</p>
+        <p>With two unsuccessful attempts, the length of the digit string will decrease.</p>
+        <p>Press any key to begin.</p>
+      `,
+      post_trial_gap: 2000
+    };
+    timeline.push(instructions);
+
+    nTrials = 6 // number of trials in the test
+    minSetSize = 4 // starting digit length
+    stimuli_duration = 1000 // number of miliseconds to display each digit
+    recall_duration = null // number of miliseconds to allow recall. If null, there is no time limit.
+    file_name = null // file name for data file. if null, a default name consisting of the participant ID and a unique number is chosen.
+    local = true // save the data file locally.
+              // If this test is being run online (e.g., on MTurk), true will cause the file to be downloaded to the participant's computer.
+              // If this test is on a server, and you wish to save the data file to that server, change this to false.
+              // If changed to false, ensure that the php file (its in the directory!) and the empty "data" folder has also been appropriately uploaded to the server.
+
+    possibleNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]  //possible digits participants can get
+
+    var selection = jsPsych.randomization.sampleWithoutReplacement(possibleNumbers, minSetSize)  //chooses random digits
+    var selection_id = -1
+
+    // keeps track of participant's scores:
+    var nError = 0
+    var highest_span_score = 0
+    var consec_error_score = 0
+
+    // first page. identifies participant for data storage
+    var p_details = {
+      type:"survey-text",
+      questions: [{prompt: "Enter participant number, name, or ID"}],
+      on_finish:function(){
+        partN = jsPsych.data.get().last(1).values()[0].partNum
+        partN = partN.replace(/['"]+/g,'')
+    //      console.log(partN[0])
+      }
+    }
+    timeline.push(p_details);
+    
+    jsPsych.run(timeline);
+
+    </script>
+</html>
