@@ -15,27 +15,6 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="column justify-content-center">
-                <h1>Header</h1>
-            </div>
-        </div>
-        <div class="container mt-2 mb-2 pl-0">
-            <div class="row justify-content-center">
-                <div class="column justify-content-center" id="data-request">
-                    <button id="muse-connect-button" class="btn bg-light">Connect to Muse</button>
-                    <button id="muse-record-button" class="btn bg-light">Start Recording Muse</button>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="column justify-content-center">
-                    <p id="data">Default</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-4">
-        <div class="row justify-content-center">
-            <div class="column justify-content-center">
                 <h1>Computational Psychometric Testing</h1>
             </div>
             <p>
@@ -47,35 +26,15 @@
     <div class="container text-center d-flex justify-content-center bg-secondary text-white mt-2 mb-2">
         <div class="p-3 mb-2 bg-secondary justify-content-center">
             <div class="row justify-content-center">
-                <button id="button-2" class="btn bg-light">
+                <button id="start-test" class="btn bg-light">
                     Start Test
                 </button>
-            </div>
-            <div class="row justify-content-center pt-3">
-                <p id="timer" class="justify-content-center">
-                    <div>Use this time to relax, calibration will finish in
-                        <span id="time">04:00</span> minutes.
-                    </div>
-                </p>
-            </div>
-            <div class="row justify-content-center pt-3">
-                <p id="data">
-                    Test Text
-                </p>  
-            </div>
-            <div class="row justify-content-center">
-                <div class="mb-3 justify-content-center">
-                    <label for="exampleFormControlInput1" class="form-label">Enter Digits Here</label>
-                    <input type="text" class="form-control text-center" id="exampleFormControlInput1" placeholder="12345">
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- Project JavaScript -->
-    <!-- <script src="./index.js"></script> -->
+    <!-- Our JavaScript -->
     <script src="{{url_for('static', filename='fetch.js')}}"></script>
-    <script src="{{url_for('static', filename='timer.js')}}"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
