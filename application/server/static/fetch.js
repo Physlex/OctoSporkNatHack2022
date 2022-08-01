@@ -1,6 +1,6 @@
 base_fetch_url = "http://127.0.0.1:5000"
 
-const record_button = document.getElementById("start-test")
+const record_button = document.getElementById("start-connection")
 record_button.onclick = async() => {
     fetch_url = base_fetch_url + "/muse/recording?duration=120";
     options = {
@@ -20,8 +20,8 @@ display_button.onclick = async() => {
     fetch_url = base_fetch_url + '/muse/display';
     options = {
         method: 'GET',
-        mode: 'same-origin',
-        cache: 'default',
-        headers: {'Content-Type': 'applica'}
+        mode: 'same-origin'
     }
+    fetch(fetch_url, options)
+    return
 }

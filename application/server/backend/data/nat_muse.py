@@ -25,5 +25,5 @@ class NatMuse:
         pass
 
     def record(self, duration):
-        muselsl.record(duration)
+        muselsl.record(duration, filename='recording')
         pass  # TODO(Alexander): Return and save CSV format of data
